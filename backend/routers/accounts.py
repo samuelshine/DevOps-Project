@@ -30,11 +30,9 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 # Pydantic model for registering a new user
 class RegisterUser(BaseModel):
     email: EmailStr
-    mobile_number: str
     username: str
     password: str
     name: str
-    dob: str
 
 class DeleteAccount(BaseModel):
     username: str = None
@@ -102,7 +100,7 @@ async def create_account(user: RegisterUser, db: Session = Depends(get_db)):
     hashed_password = get_password_hash(user.password)
 
     # Adding user to database
-    db_user = User(email=user.email, password=hashed_password, username=user.username, name=user.name, mobile_number=user.mobile_number, date_of_birth=user.dob)
+    db_user = User(email=user.email, password=hashed_password, username=user.username, name=user.name)
     db.add(db_user)
     db.commit()
 

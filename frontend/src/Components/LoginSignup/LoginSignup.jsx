@@ -4,12 +4,17 @@ import './LoginSignup.css';
 const LoginSignup = () => {
   const [action, setAction] = useState('Login');
   const [email, setEmail] = useState('');
-  const [mobileNumber, setMobileNumber] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [dob, setDob] = useState('');
   const [message, setMessage] = useState('Test');
+
+  const resetFormFields = () => {
+    setEmail('');
+    setUsername('');
+    setPassword('');
+    setName('');
+  };
 
   const signup = async (e) => {
     e.preventDefault();
@@ -21,16 +26,15 @@ const LoginSignup = () => {
       },
       body: JSON.stringify({
         email,
-        mobile_number: mobileNumber,
         username,
         password,
         name,
-        dob,
       }),
     });
 
     if (response.ok) {
-        setMessage('Account created successfully');
+        setAction('Login');
+        resetFormFields();
       } else {
         const errorData = await response.json();
         setMessage(`Failed to create account: ${errorData.detail}`);
@@ -53,7 +57,7 @@ const LoginSignup = () => {
   
       if (response.ok) {
         const data = await response.json();
-        setMessage('Login successful');
+        setMessage(data.username);
       } else {
         const errorData = await response.json();
         setMessage(`Failed to login: ${errorData.detail}`);
@@ -92,15 +96,6 @@ const LoginSignup = () => {
           {action==="Login"?null:<div className="input">
             <input
               type="text"
-              placeholder="Mobile Number"
-              value={mobileNumber}
-              onChange={(e) => setMobileNumber(e.target.value)}
-            />
-          </div>}
-          
-          {action==="Login"?null:<div className="input">
-            <input
-              type="text"
               placeholder="Full Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -115,14 +110,6 @@ const LoginSignup = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          {action==="Login"?null:<div className="input">
-            <input
-              type="date"
-              placeholder="Date of Birth"
-              value={dob}
-              onChange={(e) => setDob(e.target.value)}
-            />
-          </div>}
           
         </div>
         {action==="Sign Up"?<a className="text-prompt" onClick={() => setAction('Login')}>

@@ -1,12 +1,18 @@
+body{
+    background: linear-gradient(150deg, #405DE6, transparent 30%),
+    linear-gradient(330deg, #FCAF45, transparent 30%),
+    linear-gradient(225deg, #E1306C, #E1306C, #C13584, #833AB4);
+}
+
 .container{
     display: flex;
     flex-direction: column;
     margin: auto;
     margin-top: 50px;
-    background: #E3DCD2;
-    padding-bottom: 30px;
-    width: 60pc;
-    border-radius: 6px;
+    padding: 10px;
+    width: 30pc;
+    background: #FFFFFF;
+    border-radius: 10px;
 }
 
 .header{
@@ -14,7 +20,6 @@
     flex-direction: column;
     align-items: center;
     gap: 9 px;
-    width: 100%;
     margin-top: 30px;
 }
 
@@ -27,7 +32,7 @@
 .underline{
     width: 20pc;
     height: 4px;
-    background: #CC8B65;
+    background: #000000;
     border-radius: 9px;
     margin: 20px;
 }
@@ -43,14 +48,14 @@
     display: flex;
     align-items: center;
     margin: auto;
-    width: 480px;
+    width: auto;
     height: 40px;
     border-radius: 6px;
     background:  #CC8B65;
 }
 
 .input input{
-    background: none;
+    background: #d3d3d3;
     border: none;
     height: 25px;
     width: 400px;
@@ -58,7 +63,8 @@
     align-items: center;
     font-size: 18px;
     color: #100C0D;
-    padding: 5px;
+    padding: 10px;
+    border-radius: 6px;
 }
 
 .submit-container{

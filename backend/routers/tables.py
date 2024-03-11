@@ -12,10 +12,10 @@ class User(Base):
     __tablename__ = "userdetails"
 
     email = Column(String)
-    mobile_number =  Column(String)
+    mobile_number =  Column(String, default=None)
     username = Column(String, primary_key=True, index=True)
     password = Column(String)
     name = Column(String)
-    date_of_birth = Column(Date)
+    date_of_birth = Column(Date, default=None)
 
 Base.metadata.create_all(bind=engine)
