@@ -4,9 +4,9 @@ load_dotenv()
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import accounts
-from routers import login
-from routers import passwordmanipulation
+from app import accounts
+from app import login
+from app import passwordmanipulation
 
 app=FastAPI()
 

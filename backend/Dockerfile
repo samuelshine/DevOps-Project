@@ -2,16 +2,16 @@
 FROM python:latest
 
 # Set the working directory in the container
-WORKDIR /code
-
-# Copy the requirements.txt file into the container
-COPY ./requirements.txt /code/requirements.txt
+WORKDIR /app
 
 # Install the Python dependencies
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy the rest of the application code into the container
-COPY ./ /code/
+COPY . .
+
+# Expose the port on which the application will run
+EXPOSE 8000
 
 # Specify the command to run the application
-CMD ["uvicorn", "main:app", "--reload"]
+CMD ["uvicorn", "fastapi:app", "--host", "0.0.0.0", "--port", "8000"]
