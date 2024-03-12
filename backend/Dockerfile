@@ -4,6 +4,13 @@ FROM python:latest
 # Set the working directory in the container
 WORKDIR /app
 
+# Create a virtual environment
+RUN python -m venv venv
+
+# Activate the virtual environment
+SHELL ["/bin/bash", "-c"]
+RUN source venv/bin/activate
+
 # Install the Python dependencies
 RUN pip install -r requirements.txt
 
