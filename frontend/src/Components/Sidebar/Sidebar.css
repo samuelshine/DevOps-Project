@@ -1,0 +1,29 @@
+
+.container{
+    height: 100%;
+    width: 20%;
+    background: black;
+    left: auto;
+    align-items: baseline;
+}
+
+.header{
+    color: white;
+    align-items: baseline;
+}
+
+.menu-items{
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    color: white;
+    padding: 30px;
+}
+
+.menu-items div{
+    align-items: baseline;
+    padding: 10px;
+    margin: 20px;
+    font-size: 20px;
+}

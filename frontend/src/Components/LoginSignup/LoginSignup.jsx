@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './LoginSignup.css';
-
+import insta_logo from '/Users/samuelshine/DevOps-Project/frontend/src/Components/resources/images/Instagram_text_logo.png';
 const LoginSignup = () => {
   const [action, setAction] = useState('Login');
   const [email, setEmail] = useState('');
@@ -71,7 +71,8 @@ const LoginSignup = () => {
   return (
     <div className="container">
       <div className="header">
-        <div className="text">{action}</div>
+        <img className="logo" src={insta_logo}></img>
+        {/*<div className="text">{action}</div> */}
         <div className="underline"></div>
       </div>
       <form onSubmit={action === "Login" ? login : signup }>
@@ -112,17 +113,12 @@ const LoginSignup = () => {
           </div>
           
         </div>
-        {action==="Sign Up"?<a className="text-prompt" onClick={() => setAction('Login')}>
-          Already have an account? Sign in
-        </a>: null}
-
-        {action==="Sign Up"?null:<a className="text-prompt" onClick={() => setAction('Sign Up')}>
-          New here? Create an account
-        </a>}
-
-        {action==="Sign Up"?null:<div className="text-prompt">
-          Lost password? <span>Click Here</span>
-        </div>}
+        <div className="text-prompt">
+          {action==="Sign Up"?null:<div className="forgot-password">
+            Lost password? <span>Click Here</span>
+          </div>}
+        </div>
+        
 
         <div className="submit-container">
             {action==="Sign Up"?<button className="submit" type='submit'>
@@ -132,9 +128,18 @@ const LoginSignup = () => {
           </button>}
           
         </div>
-        <div>{message}</div>
+
+        <div className="text-prompt">
+          {action==="Sign Up"?<a className="login" onClick={() => setAction('Login')}>
+            Already have an account? Sign in
+          </a>: null}
+          {action==="Sign Up"?null:<a className="signin" onClick={() => setAction('Sign Up')}>
+            New here? <span>Create an account</span>
+          </a>}
+        </div>
       </form>
     </div>
+    
   );
 };
 

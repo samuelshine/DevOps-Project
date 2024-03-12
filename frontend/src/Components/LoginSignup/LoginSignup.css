@@ -9,10 +9,20 @@ body{
     flex-direction: column;
     margin: auto;
     margin-top: 50px;
-    padding: 10px;
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    transform: translate(25%, -25%);
+    padding: 20px;
     width: 30pc;
     background: #FFFFFF;
     border-radius: 10px;
+    height: 500px;
+    justify-content: space-evenly;
+}
+
+.logo{
+    width: 60%;
 }
 
 .header{
@@ -34,7 +44,7 @@ body{
     height: 4px;
     background: #000000;
     border-radius: 9px;
-    margin: 20px;
+    margin-top: 20px;
 }
 
 .inputs{
@@ -42,6 +52,7 @@ body{
     flex-direction: column;
     gap: 15px;
     align-items: center;
+    margin: 30px;
 }
 
 .input{
@@ -52,6 +63,7 @@ body{
     height: 40px;
     border-radius: 6px;
     background:  #CC8B65;
+    
 }
 
 .input input{
@@ -79,24 +91,16 @@ body{
     align-items: center;
     background: #100C0D;
     color: #E3DCD2;
-    margin: 30px;
+    margin: auto;
     padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
     width: fit-content;
-    border-radius: 6px;
-    font-size: 18px;
-}
-
-.gray{
-    background: white;
-    color: gray;
-    margin: 30px;
-    padding: 10px;
-    align-items: center;
-    width: fit-content;
-    border-radius: 6px;
+    border-radius: 4px;
     font-size: 18px;
 }
 
 .text-prompt{
-    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
 }
