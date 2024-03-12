@@ -21,9 +21,7 @@ body{
     justify-content: space-evenly;
 }
 
-.logo{
-    width: 60%;
-}
+
 
 .header{
     display: flex;

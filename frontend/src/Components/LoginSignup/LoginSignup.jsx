@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './LoginSignup.css';
-{/*import insta_logo from '/resources/images/Instagram_text_logo.png';*/}
+
 import { useNavigate } from 'react-router-dom';
 
 const LoginSignup = () => {
