@@ -51,13 +51,11 @@ body{
     display: flex;
     flex-direction: column;
     gap: 15px;
-    align-items: center;
     margin: 30px;
 }
 
 .input{
     display: flex;
-    align-items: center;
     margin: auto;
     width: auto;
     height: 40px;
@@ -103,4 +101,5 @@ body{
 .text-prompt{
     margin: 10px;
     font-size: 18px;
+    text-align: center;
 }

@@ -1,13 +1,12 @@
 
-.container{
+.sidebar-container{
     height: 100%;
     width: 20%;
     background: black;
     left: auto;
-    align-items: baseline;
 }
 
-.header{
+.sidebar-header{
     color: white;
     align-items: baseline;
 }

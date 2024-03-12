@@ -3,8 +3,8 @@ import './Sidebar.css';
 
 const Sidebar = () => {
   return (
-    <div className='container'>
-        <div className="header">
+    <div className='sidebar-container'>
+        <div className="sidebar-header">
             <h1>Instagram</h1>
         </div>
         <div className="menu-items">
@@ -19,4 +19,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default Sidebar;

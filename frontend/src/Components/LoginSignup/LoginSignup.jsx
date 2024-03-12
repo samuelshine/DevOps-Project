@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './LoginSignup.css';
 import insta_logo from '/Users/samuelshine/DevOps-Project/frontend/src/Components/resources/images/Instagram_text_logo.png';
+import { useNavigate } from 'react-router-dom';
+
 const LoginSignup = () => {
   const [action, setAction] = useState('Login');
   const [email, setEmail] = useState('');
@@ -41,6 +43,7 @@ const LoginSignup = () => {
       }
   };
 
+  let navigate = useNavigate(); 
   const login = async (e) => {
     e.preventDefault();
     try {
@@ -57,7 +60,11 @@ const LoginSignup = () => {
   
       if (response.ok) {
         const data = await response.json();
-        setMessage(data.username);
+        if (data.message === "Login Successful") {
+          navigate('/home');
+        } else {
+          setMessage(`Failed to login: ${data.message}`);
+        }
       } else {
         const errorData = await response.json();
         setMessage(`Failed to login: ${errorData.detail}`);
@@ -130,10 +137,10 @@ const LoginSignup = () => {
         </div>
 
         <div className="text-prompt">
-          {action==="Sign Up"?<a className="login" onClick={() => setAction('Login')}>
+          {action==="Sign Up"?<a className="login" onClick={() => {setAction('Login'); resetFormFields();}}>
             Already have an account? Sign in
           </a>: null}
-          {action==="Sign Up"?null:<a className="signin" onClick={() => setAction('Sign Up')}>
+          {action==="Sign Up"?null:<a className="signin" onClick={() => {setAction('Sign Up'); resetFormFields();}}>
             New here? <span>Create an account</span>
           </a>}
         </div>

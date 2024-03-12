@@ -48,7 +48,7 @@ async def login(user: Login, db: Session = Depends(get_db)):
     # Comparing the password with the hashed password
     if user_details:
         if verify_password(user.password, user_details.password):
-            return {"email": user_details.email, "username": user_details.username, "name": user_details.name}
+            return {"message": "Login Successful", "email": user_details.email, "username": user_details.username, "name": user_details.name}
         else:
             return {"message": "Incorrect password"}  # Incorrect password
 
