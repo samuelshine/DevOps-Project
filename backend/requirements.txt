@@ -44,6 +44,7 @@ packaging==23.2
 pandas==1.5.3
 pillow==10.2.0
 preshed==3.0.9
+psycopg2-binary
 pydantic==2.6.1
 pydantic_core==2.16.2
 pyparsing==3.1.1
