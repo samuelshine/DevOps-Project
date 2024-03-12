@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from routers import accounts
 from routers import login
+from routers import passwordmanipulation
 
 app=FastAPI()
 
@@ -23,6 +24,7 @@ app.add_middleware(
 
 app.include_router(login.router)
 app.include_router(accounts.router)
+app.include_router(passwordmanipulation.router)
 
 @app.get('/')
 def root():

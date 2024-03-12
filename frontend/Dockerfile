@@ -1,20 +1,21 @@
-# Use an official Node.js runtime as the base image
-FROM node:14
+# pull official base image
+FROM node:latest as build
+# set working directory
+WORKDIR /app
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+# Silent clean install of npm
+RUN npm ci --silent
+RUN npm install react-scripts@3.4.1 -g --silent
+# add app
+COPY . /app/
 
-# Set the working directory in the container
-WORKDIR /usr/src/app
+# Build production
+RUN npm run build
+RUN npm install -g serve
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
-
-# Install Node.js dependencies
-RUN npm install
-
-# Copy the rest of the application code to the working directory
-COPY . .
-
-# Expose the port the app runs on
-EXPOSE 3000
-
-# Command to run the application
-CMD ["npm", "start"]
+## Start the app on port 3006
+CMD serve -s build -l 3006
