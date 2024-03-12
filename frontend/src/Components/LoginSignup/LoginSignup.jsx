@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './LoginSignup.css';
-import insta_logo from '/Users/samuelshine/DevOps-Project/frontend/src/Components/resources/images/Instagram_text_logo.png';
+{/*import insta_logo from '/resources/images/Instagram_text_logo.png';*/}
 import { useNavigate } from 'react-router-dom';
 
 const LoginSignup = () => {
@@ -78,7 +78,7 @@ const LoginSignup = () => {
   return (
     <div className="container">
       <div className="header">
-        <img className="logo" src={insta_logo}></img>
+        {/*<img className="logo" src={insta_logo}></img> */}
         {/*<div className="text">{action}</div> */}
         <div className="underline"></div>
       </div>

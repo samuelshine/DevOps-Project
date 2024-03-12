@@ -18,9 +18,6 @@ const images = [
 function Home() {
   return (
     <div className="Home">
-      <header className="Home-header">
-        <h1>Instagram Home Page</h1>
-      </header>
       <Sidebar/>
       <div className="grid-container">
         {images.map((image, index) => (
