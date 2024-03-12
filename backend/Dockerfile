@@ -11,6 +11,9 @@ RUN python -m venv venv
 SHELL ["/bin/bash", "-c"]
 RUN source venv/bin/activate
 
+# Set the PYTHONPATH to the current directory
+ENV PYTHONPATH=/app
+
 # Install the Python dependencies
 RUN pip install -r requirements.txt
 
