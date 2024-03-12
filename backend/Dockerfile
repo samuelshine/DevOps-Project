@@ -2,23 +2,13 @@
 FROM python:latest
 
 # Set the working directory in the container
-WORKDIR /app
-
-# Create a virtual environment
-RUN python -m venv venv
-
-# Activate the virtual environment
-SHELL ["/bin/bash", "-c"]
-RUN source venv/bin/activate
-
-# Set the PYTHONPATH to the current directory
-ENV PYTHONPATH=/app
+WORKDIR /code
 
 # Install the Python dependencies
 RUN pip install -r requirements.txt
 
 # Copy the rest of the application code into the container
-COPY . .
+COPY ./app /code/app
 
 # Expose the port on which the application will run
 EXPOSE 8000
