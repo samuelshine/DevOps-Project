@@ -77,4 +77,4 @@ weasel==0.3.4
 wordcloud==1.9.3
 XlsxWriter==3.0.8
 passlib
-
+pydantic[email]
