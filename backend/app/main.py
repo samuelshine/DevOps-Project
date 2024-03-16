@@ -8,8 +8,6 @@ from routers import accounts
 from routers import login
 from routers import passwordmanipulation
 
-from app import app
-
 app=FastAPI()
 
 origins = [

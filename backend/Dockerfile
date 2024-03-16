@@ -8,7 +8,7 @@ WORKDIR /code
 RUN pip install -r requirements.txt
 
 # Copy the rest of the application code into the container
-COPY ./app /code/app
+COPY ./app /code
 
 # Expose the port on which the application will run
 EXPOSE 8000
