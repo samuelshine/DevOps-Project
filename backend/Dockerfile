@@ -4,14 +4,16 @@ FROM python:latest
 # Set the working directory in the container
 WORKDIR /code
 
+# Copy the application code into the container
+COPY ./ /code
+
 # Install the Python dependencies
 RUN pip install -r requirements.txt
 
-# Copy the rest of the application code into the container
-COPY ./app /code
-
 # Expose the port on which the application will run
 EXPOSE 8000
+
+WORKDIR /code/appli
 
 # Specify the command to run the application
 CMD ["uvicorn", "main:app", "--reload"]
