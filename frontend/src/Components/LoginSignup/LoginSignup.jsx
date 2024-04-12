@@ -74,6 +74,14 @@ const LoginSignup = () => {
     }
   };
   
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (action === "Login") {
+        login(e);
+    } else if(action === "Sign Up"){
+        signup(e);
+    }
+};
 
   return (
     <div className="container">
@@ -82,7 +90,7 @@ const LoginSignup = () => {
         {/*<div className="text">{action}</div> */}
         <div className="underline"></div>
       </div>
-      <form onSubmit={action === "Login" ? login : signup }>
+      <form onSubmit={handleFormSubmit}>
         <div className="inputs">
           <div className="input">
             <input
@@ -92,23 +100,25 @@ const LoginSignup = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          {action==="Login"?null:<div className="input">
+          {action==="Sign Up"?<div className="input">
             <input
               type="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-          </div>}
+          </div>: null}
           
-          {action==="Login"?null:<div className="input">
+          {action==="Sign Up"?<div className="input">
             <input
               type="text"
               placeholder="Full Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-          </div>}
+          </div>: null}
+
+          
           
           <div className="input">
             <input
@@ -121,9 +131,9 @@ const LoginSignup = () => {
           
         </div>
         <div className="text-prompt">
-          {action==="Sign Up"?null:<div className="forgot-password">
+          {action==="Login"?<div className="forgot-password">
             Lost password? <span>Click Here</span>
-          </div>}
+          </div>: null}
         </div>
         
 
@@ -140,9 +150,9 @@ const LoginSignup = () => {
           {action==="Sign Up"?<a className="login" onClick={() => {setAction('Login'); resetFormFields();}}>
             Already have an account? Sign in
           </a>: null}
-          {action==="Sign Up"?null:<a className="signin" onClick={() => {setAction('Sign Up'); resetFormFields();}}>
+          {action==="Login"?<a className="signin" onClick={() => {setAction('Sign Up'); resetFormFields();}}>
             New here? <span>Create an account</span>
-          </a>}
+          </a>: null}
         </div>
       </form>
     </div>

@@ -34,6 +34,7 @@ class RegisterUser(BaseModel):
     password: str
     name: str
 
+
 class DeleteAccount(BaseModel):
     username: str = None
     email: EmailStr = None
