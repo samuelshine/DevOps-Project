@@ -15,8 +15,8 @@ const CreatePost = () => {
       event.preventDefault();
       
       const formData = new FormData();
-      formData.append('file', event.target.elements.image.files[0]);
-      formData.append('caption', event.target.elements.caption.value);
+      formData.append('file', event.target.image.files[0]);
+      formData.append('caption', event.target.caption.value);
     
       // Get username from local storage
       const username = localStorage.getItem('username');
@@ -38,6 +38,8 @@ const CreatePost = () => {
         console.error('Error creating post:', error);
       }
     };
+    
+    
   
       
 

@@ -22,7 +22,7 @@ class User(Base):
 class Posts(Base):
     __tablename__ = "posts"
 
-    post_id = Column(Integer, primary_key=True)
+    post_id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(String, ForeignKey("userdetails.username"))
     image_file_name = Column(String)
     caption = Column(String)
