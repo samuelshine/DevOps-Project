@@ -1,25 +1,45 @@
 import React, { useState } from 'react';
 import './CreateProfile.css';
-
-
+import { useNavigate } from 'react-router-dom';
 
 const CreateProfile = () => {
   const [action, setAction] = useState('Create');
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(null); // Store the file object instead of URL
   const [displayName, setDisplayName] = useState('');
   const [bio, setBio] = useState('');
+  const navigate = useNavigate();
 
   function handleChange(e) {
     const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      setFile(URL.createObjectURL(selectedFile));
-    } else {
-      setFile(null);
-    }
+    setFile(selectedFile); // Store the file object
   }
 
   const handleSubmit = async (event) => {
-    // Your existing code for form submission
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append('display_name', displayName);
+    formData.append('bio', bio);
+
+    // Assuming you have the username stored in localStorage
+    const username = localStorage.getItem('username');
+    formData.append('username', username);
+
+    try {
+      const response = await fetch('http://localhost:8000/createprofile', {
+        method: 'POST',
+        body: formData
+      });
+      if (response.ok) {
+        console.log('Profile created successfully');
+        navigate(`/profile/${username}`);
+      } else {
+        console.error('Failed to create profile');
+      }
+    } catch (error) {
+      console.error('Error creating profile:', error);
+    }
   };
 
   return (
@@ -48,7 +68,7 @@ const CreateProfile = () => {
           </div>
           {file && (
             <div className='image-preview'>
-              <img src={file} alt="Preview" />
+              <img src={URL.createObjectURL(file)} alt="Preview" />
             </div>
           )}
         </div>

@@ -62,3 +62,14 @@ async def get_post(post_id: int, db: Session = Depends(get_db)):
         file_content = base64.b64encode(f.read()).decode('utf-8')
 
     return JSONResponse(content={"caption": post.caption, "image": file_content}, status_code=200)
+
+@router.get("/getallposts/{username}")
+async def get_all_posts(username: str, db: Session = Depends(get_db)):
+    posts = db.query(Posts).filter(Posts.username == username).all()
+    post_images = []
+    for post in posts:
+        with open(f"posts/{post.image_file_name}", "rb") as f:
+            image_data = base64.b64encode(f.read()).decode('utf-8')
+            post_images.append(image_data)
+    return {"post_images": post_images}
+
