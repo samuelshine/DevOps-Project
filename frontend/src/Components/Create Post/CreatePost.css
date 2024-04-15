@@ -1,0 +1,52 @@
+body{
+    background: linear-gradient(150deg, #405DE6, transparent 30%),
+    linear-gradient(330deg, #FCAF45, transparent 30%),
+    linear-gradient(225deg, #E1306C, #E1306C, #C13584, #833AB4);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 50px;
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    transform: translate(25%, -25%);
+    padding: 20px;
+    width: 30pc;
+    background: #FFFFFF;
+    border-radius: 10px;
+    height: 500px;
+    justify-content: space-evenly;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9 px;
+    margin-top: 30px;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 30px;
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 30px;
+}
+
+.image-preview{
+    align-items: center;
+}
+.image-preview img {
+    max-width: 20pc;
+    
+}

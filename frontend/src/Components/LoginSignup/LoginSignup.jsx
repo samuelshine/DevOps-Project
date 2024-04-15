@@ -60,7 +60,13 @@ const LoginSignup = () => {
   
       if (response.ok) {
         const data = await response.json();
+        console.log("Request")
+        console.log(data)
         if (data.message === "Login Successful") {
+          // Store the username in localStorage
+          console.log("Redirecting")
+          localStorage.setItem('username', username);
+          // Redirect to the home page
           navigate('/home');
         } else {
           setMessage(`Failed to login: ${data.message}`);
@@ -86,7 +92,7 @@ const LoginSignup = () => {
   return (
     <div className="container">
       <div className="header">
-        {/*<img className="logo" src={insta_logo}></img> */}
+        {/*<img className="logo" src={insta_logo}></img>}
         {/*<div className="text">{action}</div> */}
         <div className="underline"></div>
       </div>
