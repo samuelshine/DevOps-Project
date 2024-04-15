@@ -3,7 +3,8 @@ from fastapi.responses import JSONResponse
 from pathlib import Path
 from . import get_db
 from sqlalchemy.orm import Session
-from .tables import Posts
+from .tables import Posts, Profile
+import base64
 
 router = APIRouter()
 
@@ -31,9 +32,33 @@ async def create_post(file: UploadFile = File(...), caption: str = Form(...), us
 
         # Update image_file_name in the database
         new_post.image_file_name = new_file_name
-        db.commit()
         
+        # Update the posts list in the Profile table
+        profile = db.query(Profile).filter(Profile.username == username).first()
+
+        # Create a new list with the existing post IDs and the new post ID
+        updated_posts = profile.posts + [new_post.post_id]
+        profile.posts = updated_posts
+
+        print(profile.posts)
+        db.commit()
+
         return JSONResponse(content={"message": "Post created successfully"})
     except Exception as e:
         print(e)
         return JSONResponse(content={"message": f"Failed to create post: {e}"}, status_code=500)
+
+
+
+@router.get("/getpost/{post_id}")
+async def get_post(post_id: int, db: Session = Depends(get_db)):
+    post = db.query(Posts).filter(Posts.post_id == post_id).first()
+    if not post:
+        return JSONResponse(content={"message": "Post not found"}, status_code=404)
+
+    # Read the image file
+    file_path = f"posts/{post.image_file_name}"
+    with open(file_path, "rb") as f:
+        file_content = base64.b64encode(f.read()).decode('utf-8')
+
+    return JSONResponse(content={"caption": post.caption, "image": file_content}, status_code=200)
