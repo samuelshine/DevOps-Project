@@ -10,7 +10,6 @@ const ProfilePage = () => {
 
   return (
     <div className="container">
-      <Sidebar /> {/* Add your Sidebar component here */}
       <div className="profile-info">
         <ProfileInfo username={username} />
       </div>

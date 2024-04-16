@@ -4,11 +4,14 @@ import Home from './Components/Home/Home';
 import CreatePost from './Components/Create Post/CreatePost'
 import CreateProfile from './Components/Create Profile/CreateProfile'
 import ProfilePage from './Components/Profile Page/ProfilePage'
-import { BrowserRouter as Router, Route, Routes, Switch, Link } from 'react-router-dom';
+import Sidebar from './Components/Sidebar/Sidebar'; // Import Sidebar component
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
+      {/* Render the Sidebar outside of the Routes */}
+      <Sidebar />
       <Routes>
         <Route path="/home" element={<Home />}/>
         <Route path="/login" element={<LoginSignup />}/>

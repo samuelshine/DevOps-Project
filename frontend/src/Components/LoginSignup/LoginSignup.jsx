@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './LoginSignup.css';
+import Popup from '../Popup/Popup.jsx'; 
 
 import { useNavigate } from 'react-router-dom';
 
@@ -67,7 +68,7 @@ const LoginSignup = () => {
           console.log("Redirecting")
           localStorage.setItem('username', username);
           // Redirect to the home page
-          navigate('/home');
+          navigate('/create/profile');
         } else {
           setMessage(`Failed to login: ${data.message}`);
         }
@@ -92,7 +93,7 @@ const LoginSignup = () => {
   return (
     <div className="container">
       <div className="header">
-        {/*<img className="logo" src={insta_logo}></img>}
+        <img className="logo" src="/resources/images/Instagram_text_logo.png" alt="Instagram Logo" />
         {/*<div className="text">{action}</div> */}
         <div className="underline"></div>
       </div>
@@ -161,6 +162,7 @@ const LoginSignup = () => {
           </a>: null}
         </div>
       </form>
+      {message && <Popup message={message} onClose={() => setMessage('')} />}
     </div>
     
   );
