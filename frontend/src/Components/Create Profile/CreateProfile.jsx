@@ -27,7 +27,7 @@ const CreateProfile = () => {
     formData.append('username', username);
 
     try {
-      const response = await fetch('http://localhost:8000/createprofile', {
+      const response = await fetch('http://0.0.0.0:8000/createprofile', {
         method: 'POST',
         body: formData
       });

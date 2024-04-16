@@ -22,7 +22,7 @@ const LoginSignup = () => {
   const signup = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost:8000/createaccount', {
+    const response = await fetch('http://0.0.0.0:8000/createaccount', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -7,7 +7,7 @@ const ProfileInfo = ({ username }) => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/getprofile/${username}`);
+        const response = await fetch(`http://0.0.0.0:8000/getprofile/${username}`);
         if (response.ok) {
           const data = await response.json();
           setProfileData(data);

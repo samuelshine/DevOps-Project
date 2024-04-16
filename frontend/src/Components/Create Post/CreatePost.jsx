@@ -23,7 +23,7 @@ const CreatePost = () => {
       formData.append('username', username);
     
       try {
-        const response = await fetch('http://localhost:8000/createpost', {
+        const response = await fetch('http://0.0.0.0:8000/createpost', {
           method: 'POST',
           body: formData
         });

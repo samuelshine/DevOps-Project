@@ -7,7 +7,7 @@ const ProfilePosts = ({ username }) => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/getallposts/${username}`);
+        const response = await fetch(`http://0.0.0.0:8000/getallposts/${username}`);
         if (response.ok) {
           const data = await response.json();
           setPostImages(data.post_images);
