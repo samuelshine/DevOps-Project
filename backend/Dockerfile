@@ -16,4 +16,4 @@ EXPOSE 8000
 WORKDIR /code/appli
 
 # Specify the command to run the application
-CMD ["uvicorn", "main:app", "--port", "8000", "--host", "0.0.0.0"]
+CMD ["uvicorn", "main:app", "--port", "8000", "--host", "127.0.0.1"]
