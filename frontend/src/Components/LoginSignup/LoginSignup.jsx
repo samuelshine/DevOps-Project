@@ -10,7 +10,7 @@ const LoginSignup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [message, setMessage] = useState('Test');
+  const [message, setMessage] = useState(null);
 
   const resetFormFields = () => {
     setEmail('');
@@ -80,6 +80,8 @@ const LoginSignup = () => {
       setMessage('Error logging in:', error);
     }
   };
+  
+  
   
   const handleFormSubmit = (e) => {
     e.preventDefault();
