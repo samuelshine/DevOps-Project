@@ -1,9 +1,11 @@
 import React from 'react';
 import './Sidebar.css';
 import { useNavigate } from 'react-router-dom';
+import SidebarProfile from '../Sidebar Profile/SidebarProfile'; // Import the SidebarProfile component
 
 const Sidebar = () => {
   let navigate = useNavigate();
+  const username = localStorage.getItem('username'); // Retrieve the username from storage
 
   const createNewPost = () => {
     navigate('/create/post');
@@ -21,6 +23,7 @@ const Sidebar = () => {
 
   return (
     <div className='sidebar-container'>
+      <SidebarProfile username={username} />
       <div className="sidebar-header">
         <h1>Instagram</h1>
       </div>

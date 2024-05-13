@@ -1,8 +1,4 @@
-body{
-    background: linear-gradient(150deg, #405DE6, transparent 30%),
-    linear-gradient(330deg, #FCAF45, transparent 30%),
-    linear-gradient(225deg, #E1306C, #E1306C, #C13584, #833AB4);
-}
+
 
 .container{
     display: flex;
