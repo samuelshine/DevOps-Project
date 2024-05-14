@@ -124,8 +124,8 @@ const ProfileInfo = ({ username }) => {
             <label className='param'><strong>{profileData.followers_count}</strong> followers</label>
             <label className='param'><strong>{profileData.following_count}</strong> following</label>
         </div>
-        <button onClick={handleButtonClick}>{buttonText}</button>
         <div><strong>{profileData.display_name}</strong><br />{profileData.bio}</div>
+        <button onClick={handleButtonClick}>{buttonText}</button>
       </div>
     </div>
   );

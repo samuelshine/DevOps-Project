@@ -1,0 +1,37 @@
+.posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .post-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    max-width: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .post-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .profile-image {
+    width: 50px; /* Adjust according to your preference */
+    height: 50px; /* Adjust according to your preference */
+    border-radius: 50%; /* To make it circular */
+    margin-right: 12px;
+    object-fit: cover;
+  }
+  
