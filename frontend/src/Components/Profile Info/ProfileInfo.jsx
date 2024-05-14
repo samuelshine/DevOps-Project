@@ -28,32 +28,39 @@ const ProfileInfo = ({ username }) => {
 
   useEffect(() => {
     const checkFollowing = async () => {
-      try {
-        const response = await fetch(`http://0.0.0.0:8000/isfollowing?follower=${localStorage.getItem('username')}&following=${profileData.username}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming you have a token stored in localStorage
-          },
-        });
-        if (response.ok) {
-          const isFollowing = await response.json();
-          console.log('Is following:', isFollowing);
-          if (profileData.username === localStorage.getItem('username')) {
-            setButtonText('Edit Profile');
-          } else {
-            setButtonText(isFollowing ? 'Follow' : 'Unfollow');
-          }          
-        } else {
-          console.error('Failed to check following status');
+        try {
+            const response = await fetch(`http://0.0.0.0:8000/isfollowing?follower=${localStorage.getItem('username')}&following=${profileData.username}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming you have a token stored in localStorage
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Is following:', data);
+
+                if (profileData.username === localStorage.getItem('username')) {
+                    setButtonText('Edit Profile');
+                } else {
+                    if (data.is_following) {
+                        setButtonText('Unfollow');
+                    } else {
+                        setButtonText('Follow');
+                    }
+                }
+            } else {
+                console.error('Failed to check following status');
+            }
+        } catch (error) {
+            console.error('Error checking following status:', error);
         }
-      } catch (error) {
-        console.error('Error checking following status:', error);
-      }
     };
-  
+
     if (profileData) {
-      checkFollowing();
+        checkFollowing();
     }
-  }, [profileData]);
+}, [profileData]);
+
 
   const handleButtonClick = async () => {
     const follower = localStorage.getItem('username')
