@@ -9,12 +9,15 @@ const ProfilePage = () => {
   const { username } = useParams();
 
   return (
-    <div className="container">
-      <div className="profile-info">
-        <ProfileInfo username={username} />
-      </div>
-      <div className='posts'>
-        <ProfilePosts username={username}/>
+    <div className='ProfilePage'>
+      <Sidebar/>
+      <div className="container">
+        <div className="profile-info">
+          <ProfileInfo username={username} />
+        </div>
+        <div className='posts'>
+          <ProfilePosts username={username}/>
+        </div>
       </div>
     </div>
   );

@@ -11,7 +11,6 @@ function App() {
   return (
     <Router>
       {/* Render the Sidebar outside of the Routes */}
-      <Sidebar />
       <Routes>
         <Route path="/home" element={<Home />}/>
         <Route path="/login" element={<LoginSignup />}/>

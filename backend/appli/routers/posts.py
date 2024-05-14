@@ -88,39 +88,41 @@ async def load_posts(username_request: UsernameRequest, db: Session = Depends(ge
         return JSONResponse(content={"message": "No posts found"}, status_code=404)
 
     posts_data = []
+    # Collect all posts from followed users
     for following in following_users:
         posts = db.query(Posts).filter(Posts.username == following).all()
         for post in posts:
-            # Fetch post image
-            post_image_path = f"posts/{post.image_file_name}"
-            with open(post_image_path, "rb") as f:
-                post_image_data = base64.b64encode(f.read()).decode('utf-8')
+            posts_data.append(post)
+    
+    # Sort posts by post_id in descending order
+    posts_data.sort(key=lambda x: x.post_id, reverse=True)
 
-            # Fetch profile image
-            following_profile = db.query(Profile).filter(Profile.username == following).first()
-            if following_profile and following_profile.profile_picture:
-                profile_image_path = f"profile_images/{following_profile.profile_picture}"
-                try:
-                    with open(profile_image_path, "rb") as f:
-                        profile_image_data = base64.b64encode(f.read()).decode('utf-8')
-                except FileNotFoundError:
-                    profile_image_data = None
+    response_data = []
+    for post in posts_data:
+        # Fetch post image
+        post_image_path = f"posts/{post.image_file_name}"
+        with open(post_image_path, "rb") as f:
+            post_image_data = base64.b64encode(f.read()).decode('utf-8')
 
-                posts_data.append({
-                    "username": post.username,
-                    "caption": post.caption,
-                    "image": post_image_data,
-                    "profile_image": profile_image_data  # Add profile image to the response
-                })
+        # Fetch profile image
+        following_profile = db.query(Profile).filter(Profile.username == post.username).first()
+        profile_image_data = None
+        if following_profile and following_profile.profile_picture:
+            profile_image_path = f"profile_images/{following_profile.profile_picture}"
+            try:
+                with open(profile_image_path, "rb") as f:
+                    profile_image_data = base64.b64encode(f.read()).decode('utf-8')
+            except FileNotFoundError:
+                profile_image_data = None
 
-    if not posts_data:
+        response_data.append({
+            "username": post.username,
+            "caption": post.caption,
+            "image": post_image_data,
+            "profile_image": profile_image_data  # Add profile image to the response
+        })
+
+    if not response_data:
         return JSONResponse(content={"message": "No posts found"}, status_code=404)
 
-    return JSONResponse(content=posts_data, status_code=200)
-
-
-    if not posts_data:
-        return JSONResponse(content={"message": "No posts found"}, status_code=404)
-
-    return JSONResponse(content=posts_data, status_code=200)
-
+    return JSONResponse(content=response_data, status_code=200)

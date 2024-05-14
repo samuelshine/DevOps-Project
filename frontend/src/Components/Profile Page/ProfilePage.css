@@ -1,4 +1,4 @@
-.Home {
+.ProfilePage {
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -23,5 +23,3 @@
     align: left;
 }
 
-
-  

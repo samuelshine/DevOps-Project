@@ -7,6 +7,10 @@ const Sidebar = () => {
   let navigate = useNavigate();
   const username = localStorage.getItem('username'); // Retrieve the username from storage
 
+  const goHome = () => {
+    navigate('/home');
+  };
+
   const createNewPost = () => {
     navigate('/create/post');
   };
@@ -28,10 +32,8 @@ const Sidebar = () => {
         <h1>Instagram</h1>
       </div>
       <div className="menu-items">
-        <div className="home">Home</div>
+        <div className="home" onClick={goHome}>Home</div>
         <div className="explore">Explore</div>
-        <div className="messages">Messages</div>
-        <div className="likes">Likes</div>
         <div className="create" onClick={createNewPost}>Create</div>
         <div className="profile" onClick={goToProfile}>Profile</div>
         <div className="logout" onClick={logout}>Logout</div>
