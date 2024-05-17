@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './CreatePost.css';
 import Sidebar from '../Sidebar/Sidebar';
-
 import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
   const [action, setAction] = useState('Create');
   const [file, setFile] = useState();
+  const navigate = useNavigate();
+  
     function handleChange(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
@@ -30,8 +31,7 @@ const CreatePost = () => {
         });
         if (response.ok) {
           console.log('Post created successfully');
-          // Redirect to another page after successful post creation
-          // Example: const navigate = useNavigate(); navigate('/posts');
+          navigate('/home');
         } else {
           console.error('Failed to create post');
         }

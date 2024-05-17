@@ -1,4 +1,4 @@
-from fastapi import Depends, APIRouter
+from fastapi import Depends, APIRouter, HTTPException
 from pydantic import BaseModel, EmailStr
 from sqlalchemy.ext.declarative import declarative_base
 import smtplib

@@ -67,8 +67,7 @@ const LoginSignup = () => {
           // Store the username in localStorage
           console.log("Redirecting")
           localStorage.setItem('username', username);
-          // Redirect to the home page
-          navigate('/create/profile');
+          checkProfileAndRedirect(username);
         } else {
           setMessage(`Failed to login: ${data.message}`);
         }
@@ -81,6 +80,30 @@ const LoginSignup = () => {
     }
   };
   
+  const checkProfileAndRedirect = async (username) => {
+    try {
+      const response = await fetch('http://localhost:8000/existingprofile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.exists) {
+          navigate('/home');
+        } else {
+          navigate('/create/profile');
+        }
+      } else {
+        setMessage('Failed to check profile existence');
+      }
+    } catch (error) {
+      setMessage('Error checking profile existence:', error);
+    }
+  };
   
   
   const handleFormSubmit = (e) => {

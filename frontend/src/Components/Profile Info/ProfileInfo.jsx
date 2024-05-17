@@ -118,13 +118,14 @@ const ProfileInfo = ({ username }) => {
         <img src={`data:image/jpeg;base64,${profileData.profile_picture}`} alt="Profile" />
       </div>
       <div className="profile-details">
-        <div className='username'>{profileData.username}</div>
-        <div className='counts'>
-            <label className='param'><strong>{profileData.posts_count}</strong> posts</label>
-            <label className='param'><strong>{profileData.followers_count}</strong> followers</label>
-            <label className='param'><strong>{profileData.following_count}</strong> following</label>
+        <div className='pf-username'>@{profileData.username}</div>
+        <div className='pf-counts'>
+            <label className='pf-param'><strong>{profileData.posts_count}</strong> posts</label>
+            <label className='pf-param'><strong>{profileData.followers_count}</strong> followers</label>
+            <label className='pf-param'><strong>{profileData.following_count}</strong> following</label>
         </div>
-        <div><strong>{profileData.display_name}</strong><br />{profileData.bio}</div>
+        <div className='pf-display-name'>{profileData.display_name}</div>
+        <div className='pf-bio'>{profileData.bio}</div>
         <button onClick={handleButtonClick}>{buttonText}</button>
       </div>
     </div>

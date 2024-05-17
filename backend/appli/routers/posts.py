@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from fastapi import APIRouter, File, UploadFile, Form, Depends
+from fastapi import APIRouter, File, UploadFile, Form, Depends, HTTPException
 from fastapi.responses import JSONResponse
 from pathlib import Path
 from . import get_db
@@ -84,15 +84,17 @@ async def load_posts(username_request: UsernameRequest, db: Session = Depends(ge
         raise HTTPException(status_code=404, detail="User not found")
 
     following_users = profile.following
-    if not following_users:
-        return JSONResponse(content={"message": "No posts found"}, status_code=404)
 
     posts_data = []
-    # Collect all posts from followed users
+    
+    # Collect posts from the given username
+    user_posts = db.query(Posts).filter(Posts.username == username).all()
+    posts_data.extend(user_posts)
+    
+    # Collect posts from followed users
     for following in following_users:
         posts = db.query(Posts).filter(Posts.username == following).all()
-        for post in posts:
-            posts_data.append(post)
+        posts_data.extend(posts)
     
     # Sort posts by post_id in descending order
     posts_data.sort(key=lambda x: x.post_id, reverse=True)

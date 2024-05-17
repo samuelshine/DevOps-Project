@@ -2,6 +2,7 @@ import React from 'react';
 import './Sidebar.css';
 import { useNavigate } from 'react-router-dom';
 import SidebarProfile from '../Sidebar Profile/SidebarProfile'; // Import the SidebarProfile component
+import { FaHome, FaCompass, FaPlusSquare, FaUser, FaSignOutAlt } from 'react-icons/fa'; // Import icons
 
 const Sidebar = () => {
   let navigate = useNavigate();
@@ -9,6 +10,10 @@ const Sidebar = () => {
 
   const goHome = () => {
     navigate('/home');
+  };
+  
+  const goExplore = () => {
+    navigate('/explore');
   };
 
   const createNewPost = () => {
@@ -31,13 +36,15 @@ const Sidebar = () => {
       <div className="sidebar-header">
         <h1>Instagram</h1>
       </div>
-      <div className="menu-items">
-        <div className="home" onClick={goHome}>Home</div>
-        <div className="explore">Explore</div>
-        <div className="create" onClick={createNewPost}>Create</div>
-        <div className="profile" onClick={goToProfile}>Profile</div>
-        <div className="logout" onClick={logout}>Logout</div>
+      <div className="menu-section">
+        <div className="menu-items">
+          <div className="menu-item" onClick={goHome}><FaHome className="icon" /> Home</div>
+          <div className="menu-item" onClick={goExplore}><FaCompass className="icon" /> Explore</div>
+          <div className="menu-item" onClick={createNewPost}><FaPlusSquare className="icon" /> Create</div>
+          <div className="menu-item" onClick={goToProfile}><FaUser className="icon" /> Profile</div>
+        </div>
       </div>
+      <div className="menu-item logout" onClick={logout}><FaSignOutAlt className="icon" /> Logout</div>
     </div>
   );
 };

@@ -64,18 +64,7 @@
     background:  #CC8B65;
 }
 
-.input input{
-    background: #d3d3d3;
-    border: none;
-    height: 25px;
-    width: 400px;
-    outline: none;
-    align-items: center;
-    font-size: 18px;
-    color: #100C0D;
-    padding: 10px;
-    border-radius: 6px;
-}
+
 
 .submit-container{
     align-items: center;

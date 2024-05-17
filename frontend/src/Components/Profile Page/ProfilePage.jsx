@@ -11,10 +11,8 @@ const ProfilePage = () => {
   return (
     <div className='ProfilePage'>
       <Sidebar/>
-      <div className="container">
-        <div className="profile-info">
-          <ProfileInfo username={username} />
-        </div>
+      <div className="profile-container">
+        <ProfileInfo username={username} />
         <div className='posts'>
           <ProfilePosts username={username}/>
         </div>

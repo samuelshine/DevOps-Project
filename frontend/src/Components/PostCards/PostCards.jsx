@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './PostCards.css'; // You can create this CSS file to style the cards
+import './PostCards.css'; 
 
 const PostCard = ({ post }) => {
   return (
     <div className="post-card">
       <div className="user-info">
-        <img src={`data:image/jpeg;base64,${post.profile_image}`} alt="profile" className="profile-image" />
-        <h3>{post.username}</h3>
+        <img src={`data:image/jpeg;base64,${post.profile_image}`} alt="profile" className="post-profile-image" />
+        <h3 className='post-username'>{post.username}</h3>
       </div>
       <img src={`data:image/jpeg;base64,${post.image}`} alt="post" className="post-image" />
-      <p>{post.caption}</p>
+      <p className="post-caption">{post.caption}</p>
     </div>
   );
 };
@@ -46,7 +46,7 @@ const PostCards = () => {
   }, [username]);
 
   if (!posts || !Array.isArray(posts)) {
-    return null; // or render a loading indicator
+    return null; 
   }
 
   return (

@@ -6,8 +6,11 @@ import PostCards from '../PostCards/PostCards';
 function Home() {
   return (
     <div className="Home">
-      <Sidebar/>
-      <PostCards/>
+      <Sidebar />
+      <div className="content">
+        <h2 className='home-title'>Latest Feed</h2>
+        <PostCards />
+      </div>
     </div>
   );
 }

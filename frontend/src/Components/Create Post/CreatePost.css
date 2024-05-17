@@ -1,52 +1,89 @@
+/* CreatePost.css */
+
 .CreatePost {
-    text-align: center;
     display: flex;
-    flex-direction: row;
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    margin-top: 50px;
-    position: absolute;
-    left: 25%;
-    top: 25%;
-    transform: translate(25%, -25%);
+  }
+  
+  .Sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    min-height: 100vh;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  
+  .container {
+    flex: 1;
     padding: 20px;
-    width: 30pc;
-    background: #FFFFFF;
-    border-radius: 10px;
-    height: 500px;
-    justify-content: space-evenly;
-}
-
-.header{
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .underline {
+    width: 50px;
+    height: 3px;
+    background-color: #333;
+    margin: 0 auto;
+  }
+  
+  form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 9 px;
-    margin-top: 30px;
-}
-
-.inputs{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 30px;
-}
-
-.btn {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 30px;
-}
-
-.image-preview{
-    align-items: center;
-}
-.image-preview img {
-    max-width: 20pc;
-    
-}
+  }
+  
+  .inputs {
+    margin-bottom: 20px;
+  }
+  
+  .input {
+    margin-bottom: 15px;
+  }
+  
+  .input input[type='file'],
+  .input input[type='text'] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .image-preview {
+    margin-bottom: 15px;
+  }
+  
+  .image-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .btn {
+    text-align: center;
+  }
+  
+  .btn button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn button:hover {
+    background-color: #555;
+  }
+  
