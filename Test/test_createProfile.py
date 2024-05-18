@@ -10,7 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class TestViewProfile():
+class TestCreateProfile():
   def setup_method(self, method):
     self.driver = webdriver.Chrome()
     self.vars = {}
@@ -18,13 +18,22 @@ class TestViewProfile():
   def teardown_method(self, method):
     self.driver.quit()
   
-  def test_viewProfile(self):
+  def test_createProfile(self):
     self.driver.get("http://localhost:3000/login")
     self.driver.set_window_size(1440, 804)
-    self.driver.find_element(By.CSS_SELECTOR, ".inputs").click()
     self.driver.find_element(By.CSS_SELECTOR, ".input:nth-child(1) > input").click()
     self.driver.find_element(By.CSS_SELECTOR, ".input:nth-child(1) > input").send_keys("mudu")
     self.driver.find_element(By.CSS_SELECTOR, ".input:nth-child(2) > input").send_keys("123")
     self.driver.find_element(By.CSS_SELECTOR, ".submit").click()
-    self.driver.find_element(By.CSS_SELECTOR, ".menu-items > .menu-item:nth-child(4)").click()
+    self.driver.find_element(By.CSS_SELECTOR, ".input:nth-child(1) > input").click()
+    self.driver.find_element(By.CSS_SELECTOR, ".input:nth-child(1) > input").send_keys("Mudu")
+    self.driver.find_element(By.CSS_SELECTOR, ".input:nth-child(2) > input").click()
+    self.driver.find_element(By.CSS_SELECTOR, ".input:nth-child(2) > input").send_keys("idk")
+    self.driver.find_element(By.NAME, "image").click()
+    self.driver.find_element(By.NAME, "image").send_keys("C:\\fakepath\\417513458_10224184293424465_7888426214461609758_n.jpg")
+    self.driver.find_element(By.CSS_SELECTOR, ".submit").click()
+    element = self.driver.find_element(By.CSS_SELECTOR, ".submit")
+    actions = ActionChains(self.driver)
+    actions.move_to_element(element).perform()
+    self.driver.execute_script("window.scrollTo(0,0)")
   

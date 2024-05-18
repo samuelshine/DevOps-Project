@@ -38,4 +38,11 @@ class Profile(Base):
     profile_picture = Column(String)
     posts = Column(ARRAY(Integer), default=[])
 
+class Followers(Base):
+    __tablename__ = "followers"
+
+    username = Column(String, primary_key=True)
+    followers = Column(ARRAY(String), default=[])
+    following = Column(ARRAY(String), default=[])
+
 Base.metadata.create_all(bind=engine)

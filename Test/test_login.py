@@ -20,7 +20,7 @@ class TestLogin():
   
   def test_login(self):
     self.driver.get("http://localhost:3000/login")
-    self.driver.set_window_size(1440, 794)
+    self.driver.set_window_size(1440, 804)
     self.driver.find_element(By.CSS_SELECTOR, ".input:nth-child(1) > input").click()
     self.driver.find_element(By.CSS_SELECTOR, ".input:nth-child(1) > input").send_keys("sam")
     self.driver.find_element(By.CSS_SELECTOR, ".input:nth-child(2) > input").click()
