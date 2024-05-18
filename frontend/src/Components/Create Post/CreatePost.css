@@ -1,89 +1,41 @@
-/* CreatePost.css */
+body {
+  display: flex;
+  align-items: center;
+  height: 100vh;  /* Ensure the body takes the full viewport height */
+  margin: 0;      /* Reset default margin */
+}
 
-.CreatePost {
-    display: flex;
-  }
-  
-  .Sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    min-height: 100vh;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-  }
-  
-  .container {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .header h1 {
-    font-size: 1.5em;
-    color: #333;
-  }
-  
-  .underline {
-    width: 50px;
-    height: 3px;
-    background-color: #333;
-    margin: 0 auto;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .inputs {
-    margin-bottom: 20px;
-  }
-  
-  .input {
-    margin-bottom: 15px;
-  }
-  
-  .input input[type='file'],
-  .input input[type='text'] {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-  
-  .image-preview {
-    margin-bottom: 15px;
-  }
-  
-  .image-preview img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .btn {
-    text-align: center;
-  }
-  
-  .btn button {
-    padding: 12px 20px;
-    font-size: 16px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .btn button:hover {
-    background-color: #555;
-  }
-  
+
+
+
+.cp-container {
+  margin-left: 320px;  /* Keep the existing horizontal alignment */
+  padding: 30px;
+  width: 30pc;
+  background: #FFFFFF;
+  border-radius: 10px;
+  height: fit-content;
+  justify-content: space-evenly;
+  position: relative;  /* Use relative positioning to allow vertical centering */
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Optional: Add a shadow for better visual effect */
+  max-height: 80vh;  /* Ensure the container does not exceed the viewport height */
+  overflow: auto;  /* Allow scrolling if content overflows */
+}
+
+
+
+
+.image-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: calc(80vh - 60px);  /* Ensure the image does not exceed the container's height, considering padding */
+  object-fit: contain;  /* Ensure the image scales properly */
+}
+

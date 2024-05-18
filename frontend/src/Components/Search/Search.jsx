@@ -40,6 +40,16 @@ const Search = () => {
     navigate(`/profile/${username}`); // Use navigate to redirect
   };
 
+  useEffect(() => {
+    // Add class to body
+    document.body.classList.add('search-body');
+
+    // Cleanup function to remove class when the component unmounts
+    return () => {
+      document.body.classList.remove('search-body');
+    };
+  }, []);
+
   return (
     <div className="Explore">
       <Sidebar />

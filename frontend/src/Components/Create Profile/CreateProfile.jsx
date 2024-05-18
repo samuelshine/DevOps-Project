@@ -72,8 +72,8 @@ const CreateProfile = () => {
             </div>
           )}
         </div>
-        <div className="btn">
-          <button type='submit'>{action}</button>
+        <div className="submit-container">
+          <button className="submit" type='submit'>{action}</button>
         </div>
       </form>
     </div>

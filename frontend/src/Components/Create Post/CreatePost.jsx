@@ -47,31 +47,28 @@ const CreatePost = () => {
   return (
     <div className='CreatePost'>
       <Sidebar/>
-      <div className="container">
+      <div className="cp-container">
         <div className="header">
           <h1>Create Post</h1>
           <div className="underline"></div>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="inputs">
-            <div className="input">
-              <input
-                type="file"
-                placeholder="Upload your image"
-                className='image'
-                onChange={handleChange}
-                accept="image/*"
-                name="image"
-              />
+            <input
+              type="file"
+              placeholder="Upload your image"
+              className='image'
+              onChange={handleChange}
+              accept="image/*"
+              name="image"
+            />
+            <input type='text' placeholder='Caption' name='caption' />
           </div>
           <div className='image-preview'>
               <img src={file} />
           </div>
-          <div className="input">
-              <input type='text' placeholder='Caption' name='caption' />
-          </div>
-          </div>
-          <div className="btn">
+          
+          <div className="submit-container">
             <button type='submit'>{action}</button>
           </div>
         </form>

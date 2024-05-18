@@ -1,20 +1,23 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Make sure the body takes the full viewport height */
+    margin: 0;      /* Reset default margin */
+}
 
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    margin-top: 50px;
-    position: absolute;
-    left: 25%;
-    top: 25%;
-    transform: translate(25%, -25%);
     padding: 20px;
     width: 30pc;
     background: #FFFFFF;
     border-radius: 10px;
-    height: 500px;
+    height: fit-content;
     justify-content: space-evenly;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Optional: Add a shadow for better visual effect */
+    max-height: 80vh;
 }
 
 
@@ -55,13 +58,14 @@
     margin: 30px;
 }
 
-.input{
-    display: flex;
-    margin: auto;
-    width: auto;
-    height: 40px;
-    border-radius: 6px;
-    background:  #CC8B65;
+.inputs input{
+    width: 100%;
+  padding: 12px;
+  font-size: 1.2em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
